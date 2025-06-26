@@ -6,6 +6,23 @@
 
 ![](https://miro.medium.com/v2/resize:fit:592/1*OCnmZc6D1Oyr5cJUUDQgXg.png)
 
+<!-- TOC -->
+* [Spring Reactive test](#spring-reactive-test)
+  * [Start](#start)
+* [Reactive Streams (specifications)](#reactive-streams-specifications)
+* [Reactor](#reactor)
+  * [Create Flux or Mono](#create-flux-or-mono)
+  * [Step verifier (test)](#step-verifier-test)
+  * [Transform](#transform)
+  * [Merge](#merge)
+  * [Log and doOn request](#log-and-doon-request)
+  * [Error](#error-)
+  * [Adapt (RxJava3, Java 8)](#adapt-rxjava3-java-8)
+  * [Other Operations](#other-operations)
+  * [Reactive to Blocking (DANGER)](#reactive-to-blocking-danger)
+  * [Blocking to Reactive](#blocking-to-reactive)
+<!-- TOC -->
+
 ## Start
 
 ```shell
