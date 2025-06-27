@@ -10,6 +10,7 @@
 * [Spring Reactive test](#spring-reactive-test)
   * [Start](#start)
 * [Reactive Streams (specifications)](#reactive-streams-specifications)
+* [Back pressure](#back-pressure)
 * [Reactor](#reactor)
   * [Create Flux or Mono](#create-flux-or-mono)
   * [Step verifier (test)](#step-verifier-test)
@@ -35,9 +36,23 @@ The Reactive Streams specification is an industry-driven effort to standardize R
 JVM, and more importantly specify how they must behave so that they are interoperable. Implementors include Reactor 3
 but also RxJava from version 2 and above, Akka Streams, Vert.x and Ratpack.
 
+# Back pressure
+
+Backpressure in software systems is the capability to overload the traffic communication. In other words, emitters of 
+information overwhelm consumers with data they are not able to process.
+
+In other words:
+
+**In Reactive Streams, backpressure defines how to regulate the transmission of stream elements.**
+
+WebFlux uses TCP flow control to regulate the backpressure in bytes. But it does not handle the logical elements the 
+consumer can receive.
+
+Good documentation: https://www.baeldung.com/spring-webflux-backpressure
+
 # Reactor
 
-These examples come from official Reactor training:
+These examples come from an official Reactor training:
 * https://projectreactor.io/learn
   * https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
@@ -124,6 +139,20 @@ Code examples:
 * `doFirst`
 * `doOnNext`
 * `doFinally`
+
+## Back pressure
+
+Natively support by Reactor, but we can add more controls.
+
+* `request(n)`
+* `onBackpressureBuffer()`
+  * bufferize the events (risk to increase the memory)
+* `onBackpressureDrop()`
+  * give up (abandon) the additional events
+* `onBackpressureLatest`
+  * keep only last elements
+
+No need to have back pressure on Mono.
 
 ## Error 
 
